@@ -3,14 +3,17 @@
 import { useEffect, useState } from "react"
 
 export function CountdownTimer() {
-  // Set end date to April 29th, 2100 GMT
-  const calculateEndDate = () => {
-    const endDate = new Date()
-    endDate.setDate(endDate.getDate() + 40) // Set to 40 days from now
+  // Use a fixed end date instead of calculating it relative to the current date
+  // Format: new Date(year, month (0-11), day, hour, minute, second)
+  // For example, if you want May 30, 2024 at midnight UTC:
+  const getFixedEndDate = () => {
+    // Fixed end date: April 29th, 2025 at 9 PM GMT
+    // Note: In JavaScript, months are 0-indexed (0 = January, 11 = December)
+    const endDate = new Date(Date.UTC(2025, 3, 29, 21, 0, 0)) // April 29, 2025 at 9 PM GMT
     return endDate
   }
 
-  const [endDate] = useState(calculateEndDate())
+  const [endDate] = useState(getFixedEndDate())
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -92,4 +95,6 @@ export function CountdownTimer() {
     </div>
   )
 }
+
+
 
