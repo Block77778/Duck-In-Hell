@@ -9,7 +9,7 @@ export function CountdownTimer() {
   const getFixedEndDate = () => {
     // Fixed end date: April 29th, 2025 at 9 PM GMT
     // Note: In JavaScript, months are 0-indexed (0 = January, 11 = December)
-    const endDate = new Date(Date.UTC(2025, 3, 29, 21, 0, 0)) // April 29, 2025 at 9 PM GMT
+    const endDate = new Date(Date.UTC(2025, 3, 29, 21, 0, 0)) // April 29, 2025 at 9 PM GMT 
     return endDate
   }
 
