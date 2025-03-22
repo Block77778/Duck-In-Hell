@@ -411,7 +411,7 @@ export function PresaleForm() {
 
         <div className="text-sm text-left text-gray-400 mb-4">
           <p>Minimum contribution: 0.01 SOL</p>
-          <p>Token price: $0.001 per token</p>
+          <p>Token price: 1 Sol = 1,000,000 tokens</p>
           <p className="mt-2 text-xs">
             Your contribution will be sent directly to the project treasury wallet. Tokens will be distributed to your
             wallet after the presale ends.
