@@ -16,7 +16,7 @@ export default function Home() {
   const [totalRaised, setTotalRaised] = useState(0)
   const [raisedPercentage, setRaisedPercentage] = useState(0)
   const [isMounted, setIsMounted] = useState(false)
-  const goalAmount = 1000 // 1,000 SOL goal
+  const goalAmount = 500 // 500 SOL goal
 
   // Add this state for the refresh button
   const [isRefreshing, setIsRefreshing] = useState(false)
