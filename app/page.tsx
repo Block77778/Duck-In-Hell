@@ -137,7 +137,7 @@ export default function Home() {
             <div className="flex justify-center md:justify-end order-1 md:order-2 md:-mt-24 lg:-mt-32">
               <div className="w-full max-w-[500px]">
                 <Image
-                  src="/public/duck-trio.png"
+                  src="/images/duck-trio.png"
                   alt="Duck In Hell Trio"
                   width={600}
                   height={600}
