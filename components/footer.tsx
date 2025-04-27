@@ -14,7 +14,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-[#ff9800]">DUCK IN HELL</h3>
             <div className="inline-block bg-[#ff4800]/20 px-3 py-1 rounded-md border border-[#ff4800]/30 mb-4">
-              <span className="text-lg font-bold text-[#ff9800]">$DUCK IN HELL</span>
+              <span className="text-lg font-bold text-[#ff9800]">$DUCKINHELL</span>
             </div>
             <p className="text-gray-400 text-xs">
               The First Meme Market Sentiment Indicator. Your emotional support in a market that has none.
@@ -37,14 +37,14 @@ export function Footer() {
                 Home
               </Link>
               <Link
-                href="#presale"
+                href="#launch"
                 className="text-gray-400 hover:text-[#ff9800] transition-colors text-xs"
                 onClick={(e) => {
                   e.preventDefault()
-                  document.querySelector("#presale")?.scrollIntoView({ behavior: "smooth" })
+                  document.querySelector("#launch")?.scrollIntoView({ behavior: "smooth" })
                 }}
               >
-                Presale
+                Launch
               </Link>
               <Link
                 href="#about"
@@ -89,7 +89,7 @@ export function Footer() {
                   X (Twitter)
                 </a>
                 <a
-                  href="https://t.me/DuckInHellSol"
+                  href="https://t.me/DuckinHell/1"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-[#ff9800] transition-colors text-xs flex items-center"
@@ -121,4 +121,5 @@ export function Footer() {
     </footer>
   )
 }
+
 
