@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import ClientLayout from "./clientLayout"
 
 export const metadata: Metadata = {
-  title: "Duck In Hell - Presale",
+  title: "Duck In Hell",
   description: "The first meme market sentiment indicator. Join the presale now!",
   generator: "v0.dev",
 }
@@ -16,6 +16,4 @@ export default function RootLayout({
   return <ClientLayout>{children}</ClientLayout>
 }
 
-
-
-import './globals.css'
+import "./globals.css"
