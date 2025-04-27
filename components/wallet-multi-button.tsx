@@ -1,25 +1,28 @@
 "use client"
 
 import { useWallet } from "@solana/wallet-adapter-react"
-import { WalletMultiButton as SolanaWalletMultiButton } from "@solana/wallet-adapter-react-ui"
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Wallet } from "lucide-react"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 
 export function WalletMultiButton() {
   const { connected } = useWallet()
   const [mounted, setMounted] = useState(false)
+  const [showDialog, setShowDialog] = useState(false)
 
   // Ensure component is mounted to avoid hydration errors
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  const handleBuyClick = () => {
+    setShowDialog(true)
+  }
+
   if (!mounted) {
     return (
-      <Button className="wallet-button">
-        <Wallet className="h-4 w-4 mr-2" />
-        Connect Wallet
+      <Button className="wallet-button" onClick={handleBuyClick}>
+        Buy Now
       </Button>
     )
   }
@@ -115,8 +118,33 @@ export function WalletMultiButton() {
           background: rgba(255, 72, 0, 0.2) !important;
         }
       `}</style>
-      <SolanaWalletMultiButton startIcon={<Wallet className="h-4 w-4" />} />
+
+      {/* Custom Buy Now button that opens the dialog */}
+      <Button className="wallet-button" onClick={handleBuyClick}>
+        Buy Now
+      </Button>
+
+      {/* Dialog that shows "Token launching soon" */}
+      <Dialog open={showDialog} onOpenChange={setShowDialog}>
+        <DialogContent className="sm:max-w-md bg-black border-[#ff4800]/50">
+          <DialogHeader>
+            <DialogTitle className="text-center text-xl text-[#ff9800]">Token Launching Soon</DialogTitle>
+          </DialogHeader>
+          <div className="py-6">
+            <DialogDescription className="text-center text-white">
+              <p className="mb-4">$DUCKINHELL token will be available soon on Raydium.</p>
+              <p>Follow us on social media for launch announcements!</p>
+            </DialogDescription>
+          </div>
+          <div className="flex justify-center">
+            <Button className="bg-[#ff4800] hover:bg-[#ff4800]/80 text-white" onClick={() => setShowDialog(false)}>
+              Got it
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
+
 
