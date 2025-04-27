@@ -124,6 +124,7 @@ export function PresaleForm() {
     loadTotalRaised()
   }, [])
 
+  // Update the handleSubmit function to handle 403 errors
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -183,7 +184,32 @@ export function PresaleForm() {
       )
 
       // Set a recent blockhash for the transaction
-      const { blockhash } = await connection.getLatestBlockhash("finalized")
+      let blockhash
+      try {
+        const blockHashResult = await connection.getLatestBlockhash("finalized")
+        blockhash = blockHashResult.blockhash
+      } catch (error) {
+        console.error("Error getting blockhash:", error)
+
+        // Try a different RPC endpoint if we get a 403 error
+        const errorStr = String(error)
+        if (errorStr.includes("403") || errorStr.includes("forbidden") || errorStr.includes("Access forbidden")) {
+          // Try a different endpoint
+          const { switchToNextRpcEndpoint } = await import("@/utils/blockchainData")
+          switchToNextRpcEndpoint()
+
+          // Try again with a new connection
+          const newConnection = new Connection(
+            "https://solana-mainnet.g.alchemy.com/v2/demo", // Use a different endpoint directly
+            { commitment: "confirmed" },
+          )
+          const newBlockHashResult = await newConnection.getLatestBlockhash("finalized")
+          blockhash = newBlockHashResult.blockhash
+        } else {
+          throw error // Re-throw if it's not a 403 error
+        }
+      }
+
       transaction.recentBlockhash = blockhash
       transaction.feePayer = publicKey
 
@@ -243,7 +269,7 @@ export function PresaleForm() {
 
       setTxStatus("success")
       setTxMessage(
-        `Transaction successful! You've contributed ${amount} SOL and will receive ${Number.parseFloat(amount) * TOKEN_DISTRIBUTION_RATE} $DUCK IN HELL tokens when distribution begins.`,
+        `Transaction successful! You've contributed ${amount} SOL and will receive ${Number.parseFloat(amount) * TOKEN_DISTRIBUTION_RATE} $DUCKINHELL tokens when distribution begins.`,
       )
       setAmount("")
 
@@ -293,7 +319,7 @@ export function PresaleForm() {
           <AlertTriangle className="h-5 w-5 text-yellow-500" />
           <AlertTitle className="text-yellow-500 font-bold">Presale Ended</AlertTitle>
           <AlertDescription className="text-sm text-white">
-            The presale has ended. You can now buy $DUCK IN HELL tokens on Raydium.
+            The presale has ended. You can now buy $DUCKINHELL tokens on Raydium.
           </AlertDescription>
         </Alert>
         <a
@@ -311,7 +337,7 @@ export function PresaleForm() {
   if (!connected) {
     return (
       <div className="flex flex-col items-center justify-center p-4">
-        <p className="mb-4 text-center text-sm">Connect your wallet to participate in the presale</p>
+        <p className="mb-4 text-center text-sm">Token launching soon on Raydium</p>
         <WalletMultiButton />
       </div>
     )
@@ -360,7 +386,7 @@ export function PresaleForm() {
           <Check className="h-4 w-4 text-green-500" />
           <AlertTitle className="text-green-500 font-medium">Success!</AlertTitle>
           <AlertDescription className="text-sm text-white">
-            {txMessage}
+            {txMessage.replace(/\$DUCK IN HELL/g, "$DUCKINHELL")}
             <div className="mt-2 text-xs">
               <p>
                 Transaction ID:{" "}
@@ -489,7 +515,7 @@ export function PresaleForm() {
             ) : (
               <>
                 {securityStatus.isSecure ? (
-                  "Buy $DUCK IN HELL Tokens"
+                  "Buy $DUCKINHELL Tokens"
                 ) : (
                   <>
                     <Shield className="h-4 w-4 mr-2 inline" />
@@ -544,4 +570,5 @@ export function PresaleForm() {
     </div>
   )
 }
+
 
