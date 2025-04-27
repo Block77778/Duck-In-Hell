@@ -21,7 +21,7 @@ export function Header() {
 
   const navItems = [
     { name: "Home", href: "#home" },
-    { name: "Presale", href: "#presale" },
+    { name: "Launch", href: "#launch" },
     { name: "About", href: "#about" },
     { name: "Duckie", href: "#duckie" },
     { name: "How It Works", href: "#how-it-works" },
@@ -104,4 +104,5 @@ export function Header() {
     </header>
   )
 }
+
 
