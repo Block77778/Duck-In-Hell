@@ -18,15 +18,15 @@ export function WalletConnect() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-[#ff4800] hover:bg-[#ff4800]/80 text-white">Connect Wallet</Button>
+        <Button className="bg-[#ff4800] hover:bg-[#ff4800]/80 text-white">Buy Now</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md bg-black border-[#ff4800]/50">
         <DialogHeader>
-          <DialogTitle className="text-center text-xl text-[#ff9800]">Connect Your Wallet</DialogTitle>
+          <DialogTitle className="text-center text-xl text-[#ff9800]">Token Launching Soon</DialogTitle>
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <p className="text-center text-sm text-gray-300 mb-4">
-            Connect your Phantom wallet to participate in the Duck In Hell presale
+            $DUCKINHELL token will be available soon on Raydium. Follow us on social media for launch announcements!
           </p>
           <Button
             onClick={handleConnect}
@@ -51,30 +51,14 @@ export function WalletConnect() {
                 Connecting...
               </>
             ) : (
-              <>
-                <svg width="20" height="20" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="128" height="128" rx="64" fill="url(#paint0_linear)" />
-                  <path
-                    d="M110.584 64.9142H99.142C99.142 41.7651 80.173 23 56.7724 23C33.6612 23 14.8253 41.3057 14.4048 64.0583C13.9708 87.283 33.1824 106.787 56.7724 106.787H60.887C63.3349 106.787 65.3139 104.834 65.3139 102.419C65.3139 100.004 63.3349 98.0512 60.887 98.0512H56.7724C38.5026 98.0512 23.4377 83.2356 23.1442 65.2309C22.8443 46.8344 37.766 31.7358 56.7724 31.7358C75.4792 31.7358 90.2655 46.3169 90.2655 64.9142H78.8232C77.1516 64.9142 75.6273 65.8858 74.9034 67.3726C74.1723 68.8521 74.3517 70.6292 75.3799 71.9714L91.4896 92.5767C92.9461 94.419 95.693 94.419 97.1495 92.5767L113.259 71.9714C114.287 70.6292 114.467 68.8521 113.736 67.3726C113.012 65.8858 111.488 64.9142 109.816 64.9142H110.584Z"
-                    fill="white"
-                  />
-                  <defs>
-                    <linearGradient id="paint0_linear" x1="64" y1="0" x2="64" y2="128" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#534BB1" />
-                      <stop offset="1" stopColor="#551BF9" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-                Connect Phantom
-              </>
+              <>Got it</>
             )}
           </Button>
         </div>
-        <p className="text-xs text-gray-400 text-center">
-          By connecting your wallet, you agree to the Terms of Service and Privacy Policy
-        </p>
+        <p className="text-xs text-gray-400 text-center">Stay tuned for our official launch announcement</p>
       </DialogContent>
     </Dialog>
   )
 }
+
 
