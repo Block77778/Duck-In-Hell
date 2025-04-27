@@ -10,7 +10,7 @@ interface WhitepaperButtonProps {
 export function WhitepaperButton({ className = "" }: WhitepaperButtonProps) {
   const handleClick = () => {
     const whitepaperUrl =
-      "https://www.dropbox.com/scl/fi/w3rkkjzg230u0ty7jmj73/DuckInHell-Whitepaper.pdf?rlkey=dmg1107tg61injdcs75a26n2s&dl=1"
+      "https://www.dropbox.com/scl/fi/11oidi1sejr2blw246rma/Whitepaper-Duck-in-hell.pdf?rlkey=vftuwxnj1xdvc7rof5kr17gsf&st=7v80lvss&dl=1"
     window.open(whitepaperUrl, "_blank")
   }
 
@@ -25,4 +25,5 @@ export function WhitepaperButton({ className = "" }: WhitepaperButtonProps) {
     </Button>
   )
 }
+
 
