@@ -7,7 +7,6 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useEffect, useState } from "react"
 import { Send, FileText } from "lucide-react"
-import { DebugPanel } from "@/components/debug-panel"
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false)
@@ -322,9 +321,9 @@ export default function Home() {
       </section>
 
       <Footer />
-      {isMounted && <DebugPanel />}
     </main>
   )
 }
+
 
 
